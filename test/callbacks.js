@@ -10,6 +10,7 @@ describe('Test Stratum client[callbacks]', () => {
       server: "grlcgang.com",
       port: 3333,
       worker: "KorkyMonster.testing",
+      password: "x",
       onConnect: () => {
         handle.shutdown();
         done();
@@ -23,6 +24,7 @@ describe('Test Stratum client[callbacks]', () => {
       server: "grlcgang.com",
       port: 3333,
       worker: "KorkyMonster.testing",
+      password: "x",
       onConnect: () => handle.shutdown(),
       onClose: () => done(),
     });
@@ -34,11 +36,14 @@ describe('Test Stratum client[callbacks]', () => {
       server: "grlcgang.com",
       port: 3333,
       worker: "KorkyMonster.testing",
+      password: "x",
       onAuthorize: (error, result) => {
+        console.log(result);
+        console.log(error);
         assert.ok(result !== null);
         handle.shutdown();
-        done();
       },
+      onClose: () => done(),
     });
   });
 
@@ -48,6 +53,7 @@ describe('Test Stratum client[callbacks]', () => {
       server: "grlcgang.com",
       port: 3333,
       worker: "KorkyMonster.testing",
+      password: "x",
       onNewDifficulty: newDiff => {
         assert.ok(newDiff > 0);
         handle.shutdown();
@@ -64,6 +70,7 @@ describe('Test Stratum client[callbacks]', () => {
       server: "grlcgang.com",
       port: 3333,
       worker: "KorkyMonster.testing",
+      password: "x",
       onSubscribe: (result) => {
         assert.ok(isObject(result) && result !== null);
         defer(handle.shutdown);
@@ -83,11 +90,12 @@ describe('Test Stratum client[callbacks]', () => {
       server: "grlcgang.com",
       port: 3333,
       worker: "KorkyMonster.testing",
+      password: "x",
       onNewMiningWork: (workObject) => {
         assert.ok(isObject(workObject) && workObject !== null);
         handle.shutdown();
-        done();
       },
+      onClose: () => done(),
     });
   });
 
