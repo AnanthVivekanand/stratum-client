@@ -1,5 +1,7 @@
 # stratum-client
-A NodeJS based stratum client for communication with stratum-capable pool.
+A NodeJS based stratum client for communication with stratum-capable pool. 
+
+This repository is a modified one of the [arnabk/stratum-client](https://github.com/arnabk/stratum-client) but with the ability to be browserified into a browser environment. For more details, see this [section](#browser) and this [PR](https://github.com/arnabk/stratum-client/pull/6)
 
 ## Installation
 
